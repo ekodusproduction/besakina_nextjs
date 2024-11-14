@@ -1,5 +1,3 @@
-import Header from "../components/_header/header";
-
 export default function Home() {
   return (
     <div></div>
