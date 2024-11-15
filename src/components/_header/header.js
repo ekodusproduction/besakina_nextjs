@@ -1,41 +1,61 @@
 "use client";
-import React from "react";
+
 import Image from "next/image";
-import { FcAdvertising } from "react-icons/fc";
+import { useState } from "react";
+import { CgMenu } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
-import { IoIosSearch } from "react-icons/io";
+import { IoSearchSharp } from "react-icons/io5";
 
-export default function Header() {
+function Header() {
+  const [isFocused, setIsFoucsed] = useState(false);
+
   return (
-    <header className="flex items-center justify-between px-7 py-4 border-b shadow-sm">
-      <Image
-        src="https://www.besakina.com/logo.png"
-        alt="besakina-logo"
-        width={100} // Set the natural width for smaller screens
-        height={40} // Set the natural height for smaller screens
-        // sizes="(max-width: 376px) 3vw, (max-width: 640px) 10vw, 8vw"
-        // className="object-contain"
-      />
+    <header className="border-b px-5 py-3 sm:px-8 sm:py-6">
+      <div className="flex items-center justify-between">
+        {/* Logo */}
+        <div className="relative h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32">
+          <Image
+            src="https://www.besakina.com/logo.png"
+            alt="besakina-logo"
+            fill
+            sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
+            className="object-contain"
+          />
+        </div>
 
-      <div className="flex items-center justify-center">
-        <input
-          className="peer w-full max-w-lg min-w-[150px] sm:min-w-[300px] lg:min-w-[400px] bg-stone-100 sm:px-4 sm:py-2.5  focus:outline-none rounded-l-sm px-2 py-1 border focus:ring-1 focus:ring-offset-1 focus:ring-logoBlue"
-          type="text"
-          placeholder="Search for Advertise, Bussiness or Service"
-        />
-        <button className="bg-logoBlue p-[0.30rem] peer-focus:py-[0.43rem] text-slate-100 rounded-r-sm">
-          <IoIosSearch className="text-stone-200 text-[23px] sm:text-4xl" />
+        <button className="flex items-center gap-3">
+          <span className="text-xs tracking-wide hover:text-logoBlue sm:text-base">
+            Post an advertisement
+          </span>
+          {/* User details */}
+          <span className="flex items-center gap-2 rounded-full border px-2 py-1 hover:bg-stone-100 hover:shadow-lg sm:px-4 sm:py-2">
+            <CgMenu className="text-xs sm:text-xl" />
+            <FaUserCircle className="text-xl text-logoBlue/60 sm:text-2xl" />
+          </span>
         </button>
       </div>
-      {/* </div> */}
-      <div className="hidden lg:flex lg:items-center lg:justify-center lg:gap-4">
-        <button className="bg-logoBlue px-3 py-1 rounded-lg font-semibold text-stone-100 text-sm  focus:outline-none focus:ring-2 focus:ring-logoBlue/70 inline-flex gap-2">
-          Post an Advertisement
-          <FcAdvertising size={20} className="text-stone-200" />
-        </button>
 
-        <FaUserCircle size={32} className="text-logoBlue/60" />
+      <div className="mx-4 mt-4 flex justify-center md:mx-8">
+        <div className="relative w-full max-w-xl">
+          {/* Search field */}
+          <input
+            type="text"
+            placeholder="Search for Advertise, Business or Service"
+            className="peer w-full rounded-full border px-2 py-1 pr-6 focus:border-none focus:bg-stone-100 focus:outline-none focus:ring-1 focus:ring-logoBlue sm:px-4 sm:py-2 sm:pr-10"
+            onFocus={() => setIsFoucsed(true)}
+            onBlur={() => setIsFoucsed(false)}
+          />
+          {/* Search button inside the input */}
+          <button className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center justify-center rounded-full bg-logoBlue px-3 py-1 transition-all duration-300 peer-focus:right-1 peer-focus:space-x-2">
+            <IoSearchSharp className="text-xl text-stone-100" />
+            <p className="hidden text-xl text-stone-100 group-focus:px-2 sm:block">
+              {isFocused && "Search"}
+            </p>
+          </button>
+        </div>
       </div>
     </header>
   );
 }
+
+export default Header;

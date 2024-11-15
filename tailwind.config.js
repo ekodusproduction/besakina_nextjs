@@ -11,6 +11,10 @@ export const theme = {
       foreground: "var(--foreground)",
       logoBlue: "rgb(49, 132, 182)",
     },
+
+    screens: {
+      mobile: "395px",
+    },
   },
 };
 export const plugins = [];
