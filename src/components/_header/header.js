@@ -17,6 +17,7 @@ function Header() {
           <Image
             src="https://www.besakina.com/logo.png"
             alt="besakina-logo"
+            priority={false}
             fill
             sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
             className="object-contain"
@@ -24,7 +25,7 @@ function Header() {
         </div>
 
         <button className="flex items-center gap-3">
-          <span className="text-xs tracking-wide hover:text-logoBlue sm:text-base">
+          <span className="cursor-pointer text-xs tracking-wide hover:text-logoBlue sm:text-base">
             Post an advertisement
           </span>
           {/* User details */}
@@ -36,7 +37,7 @@ function Header() {
       </div>
 
       <div className="mx-4 mt-4 flex justify-center md:mx-8">
-        <div className="relative w-full max-w-xl">
+        <div className="relative w-full max-w-xl rounded-full shadow-md">
           {/* Search field */}
           <input
             type="text"
@@ -48,9 +49,9 @@ function Header() {
           {/* Search button inside the input */}
           <button className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center justify-center rounded-full bg-logoBlue px-3 py-1 transition-all duration-300 peer-focus:right-1 peer-focus:space-x-2">
             <IoSearchSharp className="text-xl text-stone-100" />
-            <p className="hidden text-xl text-stone-100 group-focus:px-2 sm:block">
+            <span className="hidden text-xl text-stone-100 group-focus:px-2 sm:inline-block">
               {isFocused && "Search"}
-            </p>
+            </span>
           </button>
         </div>
       </div>
