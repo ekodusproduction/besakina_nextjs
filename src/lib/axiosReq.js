@@ -2,7 +2,7 @@ import { handleApiError } from "@/utils/errorHander";
 import axios from "axios";
 
 const besakinaApi = axios.create({
-  baseURL: "https://besakina.com/dev/api/",
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   timeout: 10000,
 });
 
